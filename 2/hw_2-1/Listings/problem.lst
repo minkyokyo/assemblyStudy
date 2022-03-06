@@ -1,0 +1,112 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             Strcat, CODE, READONLY
+    2 00000000                 ENTRY
+    3 00000000         
+    4 00000000         Main
+    5 00000000 E59F0040        LDR              r0, =string1
+    6 00000004 E59F1040        LDR              r1, =string2
+    7 00000008 E59F2034        LDR              r2, resultaddr
+    8 0000000C         
+    9 0000000C         
+   10 0000000C         Compare
+   11 0000000C E4D03001        LDRB             r3, [r0], #1
+   12 00000010 E4D14001        LDRB             r4, [r1], #1
+   13 00000014         
+   14 00000014 E0936004        ADDS             r6, r3, r4
+   15 00000018 03A0500A        MOVEQ            r5, #10
+   16 0000001C 0A000003        BEQ              Endline
+   17 00000020         
+   18 00000020 E1530004        CMP              r3, r4
+   19 00000024 0AFFFFF8        BEQ              Compare
+   20 00000028 13A0500B        MOVNE            r5, #11
+   21 0000002C EAFFFFFF        B                Endline
+   22 00000030         
+   23 00000030         Endline
+   24 00000030 E5825000        STR              r5, [r2]
+   25 00000034 E1A0F00E        MOV              pc, lr
+   26 00000038         
+   27 00000038 61 70 70 
+              6C 65 00 string1 DCB              "apple",0
+   28 0000003E 61 70 70 
+              6C 00    string2 DCB              "appl",0
+   29 00000043 00 00040000 
+                       resultaddr
+                               DCD              &40000
+   30 00000048         
+   31 00000048                 END
+              00000000 
+              00000000 
+Command Line: --debug --xref --diag_suppress=9931 --cpu=ARM9E --apcs=interwork 
+--depend=.\objects\problem.d -o.\objects\problem.o -IC:\Keil_v5\ARM\RV31\INC -I
+C:\Keil_v5\ARM\CMSIS\Include --predefine="__EVAL SETA 1" --predefine="__UVISION
+_VERSION SETA 521" --list=.\listings\problem.lst problem.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+Compare 0000000C
+
+Symbol: Compare
+   Definitions
+      At line 10 in file problem.s
+   Uses
+      At line 19 in file problem.s
+Comment: Compare used once
+Endline 00000030
+
+Symbol: Endline
+   Definitions
+      At line 23 in file problem.s
+   Uses
+      At line 16 in file problem.s
+      At line 21 in file problem.s
+
+Main 00000000
+
+Symbol: Main
+   Definitions
+      At line 4 in file problem.s
+   Uses
+      None
+Comment: Main unused
+Strcat 00000000
+
+Symbol: Strcat
+   Definitions
+      At line 1 in file problem.s
+   Uses
+      None
+Comment: Strcat unused
+resultaddr 00000044
+
+Symbol: resultaddr
+   Definitions
+      At line 29 in file problem.s
+   Uses
+      At line 7 in file problem.s
+Comment: resultaddr used once
+string1 00000038
+
+Symbol: string1
+   Definitions
+      At line 27 in file problem.s
+   Uses
+      At line 5 in file problem.s
+Comment: string1 used once
+string2 0000003E
+
+Symbol: string2
+   Definitions
+      At line 28 in file problem.s
+   Uses
+      At line 6 in file problem.s
+Comment: string2 used once
+7 symbols
+341 symbols in table

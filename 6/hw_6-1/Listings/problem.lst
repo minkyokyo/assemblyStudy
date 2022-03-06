@@ -1,0 +1,135 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             Strcpy, CODE, READONLY
+    2 00000000                 ENTRY
+    3 00000000         ;strcpy´Â ¹®ÀÚ2¿¡ ¹®ÀÚ1 º¹»çÇÏ´Â °Í.
+    4 00000000         
+    5 00000000         Main
+    6 00000000 E59F0018        LDR              r0, =Table  ;load the address o
+                                                            f the table
+    7 00000004 E59F1018        LDR              r1, =Copied ; load the address 
+                                                            of the Copied
+    8 00000008         
+    9 00000008         Loop
+   10 00000008 E4D02001        LDRB             r2, [r0], #1 ; load the first b
+                                                            yte into R2
+   11 0000000C E3520000        CMP              r2, #0      ; ¹®ÀÚ¿­ ³¡ÀÎ°¡??
+   12 00000010 0A000001        BEQ              Out         ;r2==0ÀÌ¸é loop ¾Æ¿
+                                                            ô
+   13 00000014 E4812001        STR              r2, [r1], #1 ;³¡ÀÌ¾Æ´Ï¸é ¹®ÀÚ À
+                                                            úÀå
+   14 00000018 EAFFFFFA        B                Loop
+   15 0000001C         
+   16 0000001C         Out
+   17 0000001C E3A0F000        MOV              pc, #0      ;return
+   18 00000020         
+   19 00000020         ;=====Data1 area
+   20 00000020 00000000 
+              00000000         AREA             Data1, DATA
+   21 00000000         Table
+   22 00000000                 ALIGN
+   23 00000000 48 65 6C 
+              6C 6F 2C 
+              20 57 6F 
+              72 6C 64 
+              00               DCB              "Hello, World", 0
+   24 0000000D         
+   25 0000000D         ;=====Result Area
+   26 0000000D                 AREA             Result, DATA
+   27 00000000         Copied
+   28 00000000 00              DCB              0
+   29 00000001                 END
+Command Line: --debug --xref --diag_suppress=9931 --cpu=ARM9E --apcs=interwork 
+--depend=.\objects\problem.d -o.\objects\problem.o -IC:\Keil_v5\ARM\RV31\INC -I
+C:\Keil_v5\ARM\CMSIS\Include --predefine="__EVAL SETA 1" --predefine="__UVISION
+_VERSION SETA 521" --list=.\listings\problem.lst problem.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+Loop 00000008
+
+Symbol: Loop
+   Definitions
+      At line 9 in file problem.s
+   Uses
+      At line 14 in file problem.s
+Comment: Loop used once
+Main 00000000
+
+Symbol: Main
+   Definitions
+      At line 5 in file problem.s
+   Uses
+      None
+Comment: Main unused
+Out 0000001C
+
+Symbol: Out
+   Definitions
+      At line 16 in file problem.s
+   Uses
+      At line 12 in file problem.s
+Comment: Out used once
+Strcpy 00000000
+
+Symbol: Strcpy
+   Definitions
+      At line 1 in file problem.s
+   Uses
+      None
+Comment: Strcpy unused
+4 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+Data1 00000000
+
+Symbol: Data1
+   Definitions
+      At line 20 in file problem.s
+   Uses
+      None
+Comment: Data1 unused
+Table 00000000
+
+Symbol: Table
+   Definitions
+      At line 21 in file problem.s
+   Uses
+      At line 6 in file problem.s
+Comment: Table used once
+2 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+Copied 00000000
+
+Symbol: Copied
+   Definitions
+      At line 27 in file problem.s
+   Uses
+      At line 7 in file problem.s
+Comment: Copied used once
+Result 00000000
+
+Symbol: Result
+   Definitions
+      At line 26 in file problem.s
+   Uses
+      None
+Comment: Result unused
+2 symbols
+342 symbols in table

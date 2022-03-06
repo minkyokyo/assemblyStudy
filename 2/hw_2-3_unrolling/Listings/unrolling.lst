@@ -1,0 +1,137 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             ARMex, CODE, READONLY
+    2 00000000                 ENTRY
+    3 00000000         
+    4 00000000         ; unrolling 기법
+    5 00000000         Main
+    6 00000000 E59F0058        LDR              r0, Temp    ;주소 저장
+    7 00000004         
+    8 00000004 E3A01001        MOV              r1, #1      ; #1을 r1에 저장.
+    9 00000008         
+   10 00000008 E0822181        ADD              r2, r2, r1, LSL #3
+   11 0000000C E0822001        ADD              r2, r2, r1
+   12 00000010         ; r2=9
+   13 00000010         
+   14 00000010         ; 11 더하기
+   15 00000010 E0822081        ADD              r2, r2, r1, LSL #1 ; r2= r2+r1 
+                                                            lsl #1 -> r2= 9 + 2
+                                                            
+   16 00000014 E0833002        ADD              r3, r3, r2  ; r3=r3+r2
+   17 00000018         
+   18 00000018         ; 13 더하기
+   19 00000018 E0822081        ADD              r2, r2, r1, LSL #1 ; r2= r2+r1 
+                                                            lsl #1 -> r2= 11 + 
+                                                            2
+   20 0000001C E0833002        ADD              r3, r3, r2  ; r3=r3+r2
+   21 00000020         
+   22 00000020         ; 15 더하기
+   23 00000020 E0822081        ADD              r2, r2, r1, LSL #1 ; r2= r2+r1 
+                                                            lsl #1 -> r2= 11 + 
+                                                            2
+   24 00000024 E0833002        ADD              r3, r3, r2  ; r3=r3+r2
+   25 00000028         
+   26 00000028         ; 17 더하기
+   27 00000028 E0822081        ADD              r2, r2, r1, LSL #1 ; r2= r2+r1 
+                                                            lsl #1 -> r2= 11 + 
+                                                            2
+   28 0000002C E0833002        ADD              r3, r3, r2  ; r3=r3+r2
+   29 00000030         
+   30 00000030         ; 19 더하기
+   31 00000030 E0822081        ADD              r2, r2, r1, LSL #1 ; r2= r2+r1 
+                                                            lsl #1 -> r2= 11 + 
+                                                            2
+   32 00000034 E0833002        ADD              r3, r3, r2  ; r3=r3+r2
+   33 00000038         
+   34 00000038         ; 21 더하기
+   35 00000038 E0822081        ADD              r2, r2, r1, LSL #1 ; r2= r2+r1 
+                                                            lsl #1 -> r2= 11 + 
+                                                            2
+   36 0000003C E0833002        ADD              r3, r3, r2  ; r3=r3+r2
+   37 00000040         
+   38 00000040         ; 23 더하기
+   39 00000040 E0822081        ADD              r2, r2, r1, LSL #1 ; r2= r2+r1 
+                                                            lsl #1 -> r2= 11 + 
+                                                            2
+   40 00000044 E0833002        ADD              r3, r3, r2  ; r3=r3+r2
+   41 00000048         
+   42 00000048         ; 25 더하기
+   43 00000048 E0822081        ADD              r2, r2, r1, LSL #1 ; r2= r2+r1 
+                                                            lsl #1 -> r2= 11 + 
+                                                            2
+
+
+
+ARM Macro Assembler    Page 2 
+
+
+   44 0000004C E0833002        ADD              r3, r3, r2  ; r3=r3+r2
+   45 00000050         
+   46 00000050         ; 27 더하기
+   47 00000050 E0822081        ADD              r2, r2, r1, LSL #1 ; r2= r2+r1 
+                                                            lsl #1 -> r2= 11 + 
+                                                            2
+   48 00000054 E0833002        ADD              r3, r3, r2  ; r3=r3+r2
+   49 00000058         
+   50 00000058         ; 29 더하기
+   51 00000058 E0822081        ADD              r2, r2, r1, LSL #1 ; r2= r2+r1 
+                                                            lsl #1 -> r2= 11 + 
+                                                            2
+   52 0000005C E0833002        ADD              r3, r3, r2  ; r3=r3+r2
+   53 00000060         
+   54 00000060         
+   55 00000060         
+   56 00000060 00004000 
+                       Temp    DCD              &00004000
+   57 00000064         
+   58 00000064         Endline
+   59 00000064 E5803000        STR              r3, [r0]
+   60 00000068                 END
+Command Line: --debug --xref --diag_suppress=9931 --cpu=ARM9E --apcs=interwork 
+--depend=.\objects\unrolling.d -o.\objects\unrolling.o -IC:\Keil_v5\ARM\RV31\IN
+C -IC:\Keil_v5\ARM\CMSIS\Include --predefine="__EVAL SETA 1" --predefine="__UVI
+SION_VERSION SETA 521" --list=.\listings\unrolling.lst unrolling.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+ARMex 00000000
+
+Symbol: ARMex
+   Definitions
+      At line 1 in file unrolling.s
+   Uses
+      None
+Comment: ARMex unused
+Endline 00000064
+
+Symbol: Endline
+   Definitions
+      At line 58 in file unrolling.s
+   Uses
+      None
+Comment: Endline unused
+Main 00000000
+
+Symbol: Main
+   Definitions
+      At line 5 in file unrolling.s
+   Uses
+      None
+Comment: Main unused
+Temp 00000060
+
+Symbol: Temp
+   Definitions
+      At line 56 in file unrolling.s
+   Uses
+      At line 6 in file unrolling.s
+Comment: Temp used once
+4 symbols
+336 symbols in table

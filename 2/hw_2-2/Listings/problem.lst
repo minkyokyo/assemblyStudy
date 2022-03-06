@@ -1,0 +1,104 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             ARMex, CODE, READONLY
+    2 00000000                 ENTRY
+    3 00000000         
+    4 00000000         Main
+    5 00000000 E59F004C        LDR              r0, =Array1
+    6 00000004 E2800024        ADD              r0, r0, #36 ;배열의 끝에서부터 
+                                                            접근하기 위해 주소�
+                                                            � 36을 더해줌.
+    7 00000008 E59F1040        LDR              r1, Address1
+    8 0000000C E3A0400A        MOV              r4, #10     ; 배열 개수
+    9 00000010         
+   10 00000010         Loop
+   11 00000010 E4102004        LDR              r2, [r0], #-4
+   12 00000014 E4812004        STR              r2, [r1], #4
+   13 00000018 E2833001        ADD              r3, r3, #1
+   14 0000001C E1530004        CMP              r3, r4      ; loop수가 10이니?
+   15 00000020 0A000000        BEQ              Endline
+   16 00000024 EAFFFFF9        B                Loop
+   17 00000028         
+   18 00000028         Endline
+   19 00000028         
+   20 00000028 0000000A 
+              00000009 
+              00000008 
+              00000007 
+              00000006 
+              00000005 
+              00000004 
+              00000003 
+              00000002 
+              00000001 Array1  DCD              10,9,8,7,6,5,4,3,2,1
+   21 00000050         
+   22 00000050 00004000 
+                       Address1
+                               DCD              &00004000
+   23 00000054         
+   24 00000054                 END
+              00000000 
+Command Line: --debug --xref --diag_suppress=9931 --cpu=ARM9E --apcs=interwork 
+--depend=.\objects\problem.d -o.\objects\problem.o -IC:\Keil_v5\ARM\RV31\INC -I
+C:\Keil_v5\ARM\CMSIS\Include --predefine="__EVAL SETA 1" --predefine="__UVISION
+_VERSION SETA 521" --list=.\listings\problem.lst problem.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+ARMex 00000000
+
+Symbol: ARMex
+   Definitions
+      At line 1 in file problem.s
+   Uses
+      None
+Comment: ARMex unused
+Address1 00000050
+
+Symbol: Address1
+   Definitions
+      At line 22 in file problem.s
+   Uses
+      At line 7 in file problem.s
+Comment: Address1 used once
+Array1 00000028
+
+Symbol: Array1
+   Definitions
+      At line 20 in file problem.s
+   Uses
+      At line 5 in file problem.s
+Comment: Array1 used once
+Endline 00000028
+
+Symbol: Endline
+   Definitions
+      At line 18 in file problem.s
+   Uses
+      At line 15 in file problem.s
+Comment: Endline used once
+Loop 00000010
+
+Symbol: Loop
+   Definitions
+      At line 10 in file problem.s
+   Uses
+      At line 16 in file problem.s
+Comment: Loop used once
+Main 00000000
+
+Symbol: Main
+   Definitions
+      At line 4 in file problem.s
+   Uses
+      None
+Comment: Main unused
+6 symbols
+340 symbols in table

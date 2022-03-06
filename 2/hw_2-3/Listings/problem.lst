@@ -1,0 +1,88 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             ARMex, CODE, READONLY
+    2 00000000                 ENTRY
+    3 00000000         
+    4 00000000         Main
+    5 00000000 E59F0024        LDR              r0, Temp    ;주소 저장
+    6 00000004         
+    7 00000004 E3A01001        MOV              r1, #1      ; #1을 r1에 저장.
+    8 00000008 E3A0200A        MOV              r2, #10     ; 연산 횟수는 10.
+    9 0000000C         
+   10 0000000C E0833181        ADD              r3, r1, LSL #3
+   11 00000010 E0833001        ADD              r3, r3, r1
+   12 00000014         ; r3=9  
+   13 00000014         
+   14 00000014         Loop
+   15 00000014 E0833081        ADD              r3, r3, r1, LSL #1 ; r3= r3+2
+   16 00000018 E0844003        ADD              r4, r4, r3  ; r4=r4+r3
+   17 0000001C         
+   18 0000001C E2855001        ADD              r5,r5,#1
+   19 00000020 E1550002        CMP              r5,r2       ;r5-r2 loop가 10인�
+                                                            �? 
+   20 00000024 0A000001        BEQ              Endline
+   21 00000028 EAFFFFF9        B                Loop
+   22 0000002C         
+   23 0000002C         
+   24 0000002C 00004000 
+                       Temp    DCD              &00004000
+   25 00000030         
+   26 00000030         Endline
+   27 00000030 E5804000        STR              r4, [r0]
+   28 00000034                 END
+Command Line: --debug --xref --diag_suppress=9931 --cpu=ARM9E --apcs=interwork 
+--depend=.\objects\problem.d -o.\objects\problem.o -IC:\Keil_v5\ARM\RV31\INC -I
+C:\Keil_v5\ARM\CMSIS\Include --predefine="__EVAL SETA 1" --predefine="__UVISION
+_VERSION SETA 521" --list=.\listings\problem.lst problem.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+ARMex 00000000
+
+Symbol: ARMex
+   Definitions
+      At line 1 in file problem.s
+   Uses
+      None
+Comment: ARMex unused
+Endline 00000030
+
+Symbol: Endline
+   Definitions
+      At line 26 in file problem.s
+   Uses
+      At line 20 in file problem.s
+Comment: Endline used once
+Loop 00000014
+
+Symbol: Loop
+   Definitions
+      At line 14 in file problem.s
+   Uses
+      At line 21 in file problem.s
+Comment: Loop used once
+Main 00000000
+
+Symbol: Main
+   Definitions
+      At line 4 in file problem.s
+   Uses
+      None
+Comment: Main unused
+Temp 0000002C
+
+Symbol: Temp
+   Definitions
+      At line 24 in file problem.s
+   Uses
+      At line 5 in file problem.s
+Comment: Temp used once
+5 symbols
+337 symbols in table

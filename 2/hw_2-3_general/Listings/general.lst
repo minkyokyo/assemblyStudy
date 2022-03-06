@@ -1,0 +1,72 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             ARMex, CODE, READONLY
+    2 00000000                 ENTRY
+    3 00000000         
+    4 00000000         Main
+    5 00000000 E59F0010        LDR              r0, Temp    ;주소 저장
+    6 00000004         
+    7 00000004 E3A01001        MOV              r1, #1      ; #1을 r1에 저장.
+    8 00000008         
+    9 00000008 E0822181        ADD              r2, r1, LSL #3
+   10 0000000C E0822081        ADD              r2, r2, r1, LSL #1
+   11 00000010         ; r2=10, 일반식 n(n+10)에 들어갈 n은 10이다
+   12 00000010         
+   13 00000010 E0823002        ADD              r3, r2, r2  ; r3= r2+r2
+   14 00000014 E0040293        MUL              r4, r3, r2  ; ; r3 = r3*10
+   15 00000018         
+   16 00000018         
+   17 00000018 00004000 
+                       Temp    DCD              &00004000
+   18 0000001C         
+   19 0000001C         Endline
+   20 0000001C E5804000        STR              r4, [r0]
+   21 00000020                 END
+Command Line: --debug --xref --diag_suppress=9931 --cpu=ARM9E --apcs=interwork 
+--depend=.\objects\general.d -o.\objects\general.o -IC:\Keil_v5\ARM\RV31\INC -I
+C:\Keil_v5\ARM\CMSIS\Include --predefine="__EVAL SETA 1" --predefine="__UVISION
+_VERSION SETA 521" --list=.\listings\general.lst general.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+ARMex 00000000
+
+Symbol: ARMex
+   Definitions
+      At line 1 in file general.s
+   Uses
+      None
+Comment: ARMex unused
+Endline 0000001C
+
+Symbol: Endline
+   Definitions
+      At line 19 in file general.s
+   Uses
+      None
+Comment: Endline unused
+Main 00000000
+
+Symbol: Main
+   Definitions
+      At line 4 in file general.s
+   Uses
+      None
+Comment: Main unused
+Temp 00000018
+
+Symbol: Temp
+   Definitions
+      At line 17 in file general.s
+   Uses
+      At line 5 in file general.s
+Comment: Temp used once
+4 symbols
+336 symbols in table
