@@ -1,0 +1,5 @@
+![Report-HW2-이미지-0](https://github.com/user-attachments/assets/74e5ace1-cf20-4e5b-95ca-151af9a161f0)
+![Report-HW2-이미지-1](https://github.com/user-attachments/assets/751a5cb4-ae5e-4358-8469-36b436e96880)
+![Report-HW2-이미지-2](https://github.com/user-attachments/assets/a340e592-d67d-414f-b3c3-da86fbc02ea0)
+![Report-HW2-이미지-3](https://github.com/user-attachments/assets/aebe8a29-e82b-4365-824a-92547c5a9b8e)
+![Report-HW2-이미지-4](https://github.com/user-attachments/assets/2e536ee4-fa11-4735-9e7b-4b67fa38c7f6)
